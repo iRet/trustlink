@@ -5,9 +5,10 @@ Native Trustlink's solution packed in to a gem to use with Rails 4+
 
 For more information please follow http://www.trustlink.ru/
 
-Added some exceptions.
+All code written by Trustlink guys, I've just added some fixes and exceptions.
 
-TODO: refactor, PHP style code.
+TODO: refactor.
+Warning PHP style code.
 
 License
 -------
