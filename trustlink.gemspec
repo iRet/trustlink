@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Trustlink::VERSION
   s.authors     = ["Trustlink", "Artyom Nikolaev"]
   s.email       = ["artyom@a22.in"]
-  s.homepage    = "http://www.trustlink.ru"
+  s.homepage    = "https://github.com/iRet/trustlink"
   s.summary     = "Trustlink Ruby On Rails module."
   s.description = "Trustlink integration."
 
