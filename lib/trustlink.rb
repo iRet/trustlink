@@ -50,7 +50,7 @@ module Trustlink
 
       @is_static = options[:is_static].present?
 
-      self.request_uri = options[:request_uri].present? ? options[:request_uri] : (self.request.request_uri rescue nil)
+      self.request_uri = options[:request_uri].present? ? options[:request_uri] : (self.request.original_url rescue nil)
       self.request_uri = self.request_uri.gsub(/\?.*$/, '').gsub(/\/+/, '/') if @is_static && self.request_uri.present?
 
 
@@ -211,7 +211,7 @@ module Trustlink
 
         result += self.error.to_s
 
-        result += '<!--REQUEST_URI='+self.request.request_uri+"-->\n"
+        result += '<!--REQUEST_URI='+self.request.original_url+"-->\n"
         result += "\n<!--\n"
         result += 'L '+VERSION+"\n"
         result += 'REMOTE_ADDR='+self.request.remote_addr+"\n"
