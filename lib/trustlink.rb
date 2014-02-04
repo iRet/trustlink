@@ -50,7 +50,7 @@ module Trustlink
 
       @is_static = options[:is_static].present?
 
-      self.request_uri = options[:request_uri].present? ? options[:request_uri] : (self.request.original_url rescue nil)
+      self.request_uri = options[:request_uri].present? ? options[:request_uri] : (self.request.path rescue nil)
       self.request_uri = self.request_uri.gsub(/\?.*$/, '').gsub(/\/+/, '/') if @is_static && self.request_uri.present?
 
 
@@ -211,7 +211,7 @@ module Trustlink
 
         result += self.error.to_s
 
-        result += '<!--REQUEST_URI='+self.request.original_url+"-->\n"
+        result += '<!--REQUEST_URI='+self.request.path+"-->\n"
         result += "\n<!--\n"
         result += 'L '+VERSION+"\n"
         result += 'REMOTE_ADDR='+self.request.remote_addr+"\n"
@@ -238,8 +238,7 @@ module Trustlink
 
       result = '<noindex>'+result+'</noindex>' if (@test && !self.isrobot)
 
-      result
-
+      result.force_encoding(@charset)
     end
 
 
@@ -249,7 +248,7 @@ module Trustlink
         http.get(path)
       }
       if resp.body
-        resp.body.force_encoding('UTF-8')
+        resp.body.force_encoding(@charset)
       else
         self.raise_error("Can't connect to server: "+host+path)
       end
