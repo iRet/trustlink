@@ -1,0 +1,9 @@
+- uri = URI(link.url)
+%li
+  %table
+    %tr
+      %td= link_to link.anchor, uri.to_s
+    %tr
+      %td.text= link.text
+    %tr
+      %td.host= uri.host
