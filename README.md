@@ -31,12 +31,13 @@ Templates will be copied to views/trustlink folder.
 Run it by cron or use whenever gem or something other way you like.
 
 ### Notes
-* In _link.html.erb first and last string inserting trustlink code recognized by trustlink bots. It should not be removed. Also important leve url untouched.
-* By default no style included. You can use styles extracted from trustlink's template. Just replace class to 'ads' used by default or Use your own.
-* Multidomain feature currently not supported. 
+* In _link.html.erb first and last string inserting trustlink code recognized by trustlink bots. It should not be removed. Also important to levae url untouched.
+* By default no style included. You can use styles extracted from trustlink's template. Just replace class to 'ads' used by default or use your own.
+* Multi-domain feature currently not supported. Ask if you need.
 
 For more information please follow http://www.trustlink.ru/
 
 License
 -------
 This project rocks and uses MIT-LICENSE.
+Copyright © 2014 Artyom Nikolaev
