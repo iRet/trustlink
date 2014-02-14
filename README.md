@@ -1,7 +1,6 @@
-#Trustlink module for Ruby On Rails
+##Trustlink module for Ruby On Rails
 
-Rewritten from scratch.
-======================
+###Rewritten from scratch
 
 ### Changes
 * parsing xml file instead of php serialized string
@@ -16,7 +15,7 @@ Rewritten from scratch.
 * `rake db:migrate`
 
 #### generating config
-* `create config/trustlink.yml` 
+* create config/trustlink.yml
 ```yml
 key: _YOUR_TRUSTLINK_HASH_
 domain: example.com
