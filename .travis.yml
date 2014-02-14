@@ -3,9 +3,10 @@ rvm:
   - 2.1.0
 env:
   - DB=mysql
+before_script:
+  - mysql -e 'create database dummy_test'
 script: 
+  - cd spec/dummy
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec
-before_script:
-  - mysql -e 'create database dummy_test'
