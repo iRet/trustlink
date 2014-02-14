@@ -6,9 +6,13 @@
 * parsing xml file instead of php serialized string
 * storing in database instead of text file
 * requesting by rake task instead of checking on every page load
-* customizable rails friendly erb remplates
+* customizable rails friendly erb templates
 
 ### Installation
+Include the gem in your Gemfile:
+```ruby
+gem "trustlink"
+```
 
 #### preparing db
 * `rails g trustlink:migration`
