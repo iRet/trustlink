@@ -8,15 +8,15 @@ describe TrustlinkHelper do
 
     before do
       helper.request.path = '/'
-      TrustlinkLink.stub(:where).with({page: '/'})
+      TrustlinkLink.stub(:where).with(page: '/')
         .and_return([
-          mock_model(TrustlinkLink, 
-            page: "/",
-            url: "http://kremlin.ru",
-            anchor: "See some stuff",
-            text: "Visit Kremlin"
-            )
-          ])
+          mock_model(TrustlinkLink,
+                     page:   '/',
+                     url:    'http://kremlin.ru',
+                     anchor: 'See some stuff',
+                     text:   'Visit Kremlin',
+                     host:   'kremlin.ru'
+          )])
     end
 
     it { should include('kremlin.ru') }
