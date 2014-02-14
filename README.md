@@ -40,4 +40,4 @@ For more information please follow http://www.trustlink.ru/
 License
 -------
 This project rocks and uses MIT-LICENSE.
-Copyright © 2014 Artyom Nikolaev
+Copyright © 2014 Artyom Nikolaev and Trustlink
