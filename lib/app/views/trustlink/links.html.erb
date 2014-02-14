@@ -1,5 +1,7 @@
 <%= start.html_safe if defined?(start) -%>
-<ul class="ads">
-  <%= render partial: 'trustlink/link', collection: links -%>
-</ul>
+<% if links.any? -%>
+  <ul class="ads">
+    <%= render partial: 'trustlink/link', collection: links -%>
+  </ul>
+<% end -%>
 <%= stop.html_safe if defined?(start) -%>
