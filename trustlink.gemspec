@@ -5,11 +5,11 @@ require "trustlink/version"
 Gem::Specification.new do |s|
   s.name        = "trustlink"
   s.version     = Trustlink::VERSION
-  s.authors     = ["Artyom Nikolaev", "Trustlink"]
+  s.authors     = ["Artyom Nikolaev"]
   s.email       = ["artyom@a22.in"]
   s.homepage    = "https://github.com/iRet/trustlink"
   s.summary     = "Trustlink Ruby On Rails module."
-  s.description = "Trustlink integration."
+  s.description = "Trustlink.ru integration."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]

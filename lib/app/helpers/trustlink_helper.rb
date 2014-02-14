@@ -7,7 +7,7 @@ module TrustlinkHelper
       options.merge!(start: TrustlinkConfig.start_code)
       options.merge!(stop:  TrustlinkConfig.stop_code)
     end
-    render(template: 'trustlink/links', locals: options) if options[:links].any?
+    render template: 'trustlink/links', locals: options
   rescue Exception => e
     "<!-- ERROR: #{e.message} -->".html_safe
   end
