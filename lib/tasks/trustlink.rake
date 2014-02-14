@@ -11,9 +11,9 @@ namespace :trustlink do
   desc "Fetch links from server"
   task fetch: :environment do
     begin
-      config = YAML::load(File.open('config/trustlink.yml')) 
+      config = YAML.load_file('config/trustlink.yml') 
     rescue Errno::ENOENT
-      raise "Config file not found (config/trustlink.yml)"
+      fail "Config file not found (config/trustlink.yml)"
     end
     
     key      = config['key']
@@ -22,18 +22,19 @@ namespace :trustlink do
     server   = config['server']          || 'db.trustlink.ru'
     
     url = "http://#{server}/#{key}/#{domain}/#{encoding}.xml"
-    data = open(url)
-    
+    begin
+      data = open(url)
+    rescue OpenURI::HTTPError
+      fail "Could not receive data"
+    end
+
     root = Nokogiri::XML(data.read).root
 
     bot_ips = root.xpath('bot_ips/ip')
     configs = root.xpath('config/item')
     pages   = root.xpath('pages/page')
 
-    raise "No bot ips found" unless bot_ips.any?
-    raise "No configs found" unless configs.any?  
-
-    if pages.any?    
+    if pages.any?
       TrustlinkConfig.delete_all
       TrustlinkLink.delete_all
 

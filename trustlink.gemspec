@@ -1,9 +1,7 @@
 $:.push File.expand_path("../lib", __FILE__)
 
-# Maintain your gem's version:
 require "trustlink/version"
 
-# Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "trustlink"
   s.version     = Trustlink::VERSION
@@ -17,11 +15,12 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.0.0"
-  s.add_dependency "php_serialize"
   s.add_dependency "nokogiri"
-  s.add_dependency "haml"
-  
+  #s.add_dependency "domainatrix"
+
   s.add_development_dependency "rspec"
   s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "fakeweb"
+  s.add_development_dependency "fakeweb-matcher"
   s.add_development_dependency "sqlite3"
 end

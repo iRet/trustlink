@@ -5,64 +5,40 @@ describe 'trustlink:fetch' do
 
   its(:prerequisites) { should include("environment") }
 
-end
+  describe "Without config file" do
 
-# # spec/lib/tasks/reports_rake_spec.rb
-# describe "reports:users" do
-#   include_context "rake"
-# 
-#   let(:csv)          { stub("csv data") }
-#   let(:report)       { stub("generated report", :to_csv => csv) }
-#   let(:user_records) { stub("user records for report") }
-# 
-#   before do
-#     ReportGenerator.stubs(:generate)
-#     UsersReport.stubs(:new => report)
-#     User.stubs(:all => user_records)
-#   end
-# 
-#   its(:prerequisites) { should include("environment") }
-# 
-#   it "generates a registrations report" do
-#     subject.invoke
-#     ReportGenerator.should have_received(:generate).with("users", csv)
-#   end
-# 
-#   it "creates the users report with the correct data" do
-#     subject.invoke
-#     UsersReport.should have_received(:new).with(user_records)
-#   end
-# end
-# 
-# describe "reports:purchases" do
-#   include_context "rake"
-# 
-#   let(:csv)              { stub("csv data") }
-#   let(:report)           { stub("generated report", :to_csv => csv) }
-#   let(:purchase_records) { stub("purchase records for report") }
-# 
-#   before do
-#     ReportGenerator.stubs(:generate)
-#     PurchasesReport.stubs(:new => report)
-#     Purchase.stubs(:valid => purchase_records)
-#   end
-# 
-#   its(:prerequisites) { should include("environment") }
-# 
-#   it "generates an purchases report" do
-#     subject.invoke
-#     ReportGenerator.should have_received(:generate).with("purchases", csv)
-#   end
-# 
-#   it "creates the purchase report with the correct data" do
-#     subject.invoke
-#     PurchasesReport.should have_received(:new).with(purchase_records)
-#   end
-# end
-# 
-# describe "reports:all" do
-#   include_context "rake"
-# 
-#   its(:prerequisites) { should include("users") }
-#   its(:prerequisites) { should include("purchases") }
-# end
+    it "should fails with message" do
+      lambda{ subject.invoke }.should raise_exception(RuntimeError, 'Config file not found (config/trustlink.yml)')
+    end
+
+  end
+
+  describe "With config file" do
+    let(:config)   { YAML.load(File.open(Rails.root.join("spec", "fixtures", "trustlink.yml"))) }
+    let(:response) { File.open(Rails.root.join("spec", "fixtures", "response.xml")) }
+
+    before do
+      YAML.stub(:load_file).with('config/trustlink.yml').and_return(config)
+      FakeWeb.register_uri(:any, "http://db.trustlink.ru/abcdefg/kremlin.ru/UTF-8.xml", body: response)
+      TrustlinkConfig.any_instance.stub(:delete_all).and_return(:true)
+      TrustlinkLink.any_instance.stub(:delete_all).and_return(:true)
+    end
+
+    it "should fetch xml file" do
+      subject.invoke
+      FakeWeb.should have_requested(:get, 'http://db.trustlink.ru/abcdefg/kremlin.ru/UTF-8.xml')
+    end
+    
+    it "should fails if could not get file" do
+      FakeWeb.register_uri(:any, "http://db.trustlink.ru/abcdefg/kremlin.ru/UTF-8.xml", status: 404)
+      lambda{ subject.invoke }.should raise_exception(RuntimeError, 'Could not receive data')      
+    end
+
+    it "should add data" do
+      subject.invoke
+      TrustlinkConfig.count.should eq 7
+      TrustlinkLink.count.should   eq 1
+    end
+  end
+
+end

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <data>
+    <bot_ips>
+      <ip>69.31.80.90</ip>
+      <ip>69.31.80.91</ip>
+    </bot_ips>
+    <config>
+      <item name="start"><![CDATA[<!--9c7ec26b-->]]></item>
+      <item name="before_text"><![CDATA[]]></item>
+      <item name="end"><![CDATA[<!--9c7ec26b-->]]></item>
+      <item name="delimiter"><![CDATA[;]]></item>
+      <item name="after_text"><![CDATA[]]></item>
+    </config>
+    <pages>
+      <page url="/">
+        <level>3</level>
+        <link>
+          <text><![CDATA[abc]]></text>
+          <anchor><![CDATA[def]]></anchor>
+          <url><![CDATA[http://kremlin.ru]]></url>
+        </link>
+      </page>
+    </pages>
+  </data>
+</xml>
