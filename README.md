@@ -1,6 +1,7 @@
 ##Trustlink module for Ruby On Rails
 
 [![Gem Version](https://badge.fury.io/rb/trustlink.png)](http://badge.fury.io/rb/trustlink)
+[![Build Status](https://travis-ci.org/iRet/trustlink.png?branch=master)](https://travis-ci.org/iRet/trustlink)
 
 ###Rewritten from scratch
 
