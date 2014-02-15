@@ -17,11 +17,11 @@ Include the gem in your Gemfile:
 gem "trustlink"
 ```
 
-#### preparing db
+#### Preparing db
 * `rails g trustlink:migration`
 * `rake db:migrate`
 
-#### generating config
+#### Generating config
 * create config/trustlink.yml
 ```yml
 key: _YOUR_TRUSTLINK_HASH_
@@ -29,24 +29,24 @@ domain: example.com
 encoding: UTF-8
 ```
 
-#### inserting links
+#### Inserting links
 Simply put helper call in desired place. Like this:
 ```ruby
 <%= trustlink_links -%>
 ```
 
-#### fetching links
+#### Fetching links
 * `rake trustlink:fetch`
 Run it by cron or use whenever gem or something other way you like.
 
-#### customizing templates (optional)
+#### Customizing templates (optional)
 * `rails g trustlink:views`
 Templates will be copied to views/trustlink folder.
 
 ### Notes
 * In _link.html.erb first and last string inserting trustlink code recognized by trustlink bots. It should not be removed. Also important to levae url untouched.
 * By default no style included. You can use styles extracted from trustlink's template. Just replace class to 'ads' used by default or use your own.
-* Multi-domain feature currently not supported. Ask if you need.
+* Multi-domain feature currently not supported. Ask if you need this feature.
 
 For more information please follow http://www.trustlink.ru/
 
