@@ -14,7 +14,7 @@
 ### Installation
 Include the gem in your Gemfile:
 ```ruby
-gem "trustlink"
+gem 'trustlink'
 ```
 
 #### Preparing db
