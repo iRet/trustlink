@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Artyom Nikolaev"]
   s.email       = ["artyom@a22.in"]
   s.homepage    = "https://github.com/iRet/trustlink"
-  s.summary     = "Trustlink Ruby On Rails module."
-  s.description = "Trustlink.ru integration."
+  s.summary     = "Trustlink.ru Ruby On Rails module"
+  s.description = "Trustlink.ru links exchange system integration"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
