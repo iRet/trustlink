@@ -29,13 +29,19 @@ domain: example.com
 encoding: UTF-8
 ```
 
-#### customizing templates (optional)
-* `rails g trustlink:views`
-Templates will be copied to views/trustlink folder.
+#### inserting links
+Simply put helper call in desired place. Like this:
+```ruby
+<%= trustlink_links -%>
+```
 
 #### fetching links
 * `rake trustlink:fetch`
 Run it by cron or use whenever gem or something other way you like.
+
+#### customizing templates (optional)
+* `rails g trustlink:views`
+Templates will be copied to views/trustlink folder.
 
 ### Notes
 * In _link.html.erb first and last string inserting trustlink code recognized by trustlink bots. It should not be removed. Also important to levae url untouched.
