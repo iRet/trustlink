@@ -37,10 +37,12 @@ Simply put helper call in desired place. Like this:
 
 #### Fetching links
 * `rake trustlink:fetch`
+
 Run it by cron or use whenever gem or something other way you like.
 
 #### Customizing templates (optional)
 * `rails g trustlink:views`
+
 Templates will be copied to views/trustlink folder.
 
 ### Notes
