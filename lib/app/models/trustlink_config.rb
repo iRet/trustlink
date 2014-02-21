@@ -9,7 +9,7 @@ class TrustlinkConfig < ActiveRecord::Base
     end
 
     def stop_code
-      where(name: 'stop').first.value
+      where(name: 'end').first.value
     end
   end
 end

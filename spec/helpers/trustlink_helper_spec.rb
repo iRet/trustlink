@@ -30,7 +30,7 @@ describe TrustlinkHelper do
         TrustlinkConfig.stub(:start_code).and_return('<!--start-->')
         TrustlinkConfig.stub(:stop_code).and_return('<!--end-->')
       end
-      
+
       it { should include('<!--start-->') }
       it { should include('<!--end-->') }
 
