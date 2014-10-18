@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency "nokogiri"
   s.add_dependency "domainatrix"
 
-  s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec", "~> 2.99.0"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "fakeweb"
   s.add_development_dependency "fakeweb-matcher"
