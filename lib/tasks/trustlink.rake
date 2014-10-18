@@ -15,12 +15,12 @@ namespace :trustlink do
     rescue Errno::ENOENT
       fail "Config file not found (config/trustlink.yml)"
     end
-    
+
     key      = config['key']
     domain   = config['domain'].downcase
     encoding = config['encoding'].upcase || 'UTF-8'
     server   = config['server']          || 'db.trustlink.ru'
-    
+
     url = "http://#{server}/#{key}/#{domain}/#{encoding}.xml"
     begin
       data = open(url)
